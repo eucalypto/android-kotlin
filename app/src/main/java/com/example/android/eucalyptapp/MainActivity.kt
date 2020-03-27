@@ -1,4 +1,4 @@
-package com.example.android.diceroller
+package com.example.android.eucalyptapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
