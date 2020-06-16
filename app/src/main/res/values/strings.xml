@@ -3,4 +3,18 @@
     <string name="roll">Roll</string>
     <string name="roll_button_text">Let\'s Roll!</string>
     <string name="rolled_dice_view_description">Rolled dice with certain number up</string>
+    <string name="name">Gandalf the Grey</string>
+    <string name="yellow_star">Yellow Star</string>
+    <string name="bio">This is a text
+        \n\nwith many
+        \n\nnewlines
+        \n\nI love making fire with my magic wand. I am a fire wizard after all!
+        \n\nI fought the Balgrog of Ugul from the core of the earth to the top of the earth. After
+        that I went to get a healthy breakfast at my favorite restaurant. I did fight the Balrog for
+        several days that felt like several weeks so I was obviously starving. I hear the Hobbits
+        have tasty breakfasts.
+        \n\nThen a Hobbit came to me and said: \"The quick brown fox jumps over the lazy dog. The
+        quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The
+        quick brown fox jumps over the lazy dog.\"
+    </string>
 </resources>

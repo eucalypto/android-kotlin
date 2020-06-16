@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.mainActivity, DiceRollerFragment())
+            // .add(R.id.mainActivity, DiceRollerFragment())
+            .add(R.id.mainActivity, AboutMeFragment())
             .commit()
     }
 }
