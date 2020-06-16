@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_dice_roller.*
 import java.util.Random
 
-
 class DiceRollerFragment : Fragment() {
 
     override fun onCreateView(
