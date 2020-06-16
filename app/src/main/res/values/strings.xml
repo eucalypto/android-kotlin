@@ -17,4 +17,6 @@
         quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The
         quick brown fox jumps over the lazy dog.\"
     </string>
+    <string name="nickname_edit_hint">what is your nickname</string>
+    <string name="done_button_text">done</string>
 </resources>
