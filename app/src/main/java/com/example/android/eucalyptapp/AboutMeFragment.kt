@@ -11,10 +11,10 @@ import com.example.android.eucalyptapp.databinding.FragmentAboutMeBinding
 
 class AboutMeFragment : Fragment() {
 
-    private var _fragmentAboutMeBinding: FragmentAboutMeBinding? = null
-    private val fragmentAboutMeBinding: FragmentAboutMeBinding
+    private var _binding: FragmentAboutMeBinding? = null
+    private val binding: FragmentAboutMeBinding
         get() {
-            return _fragmentAboutMeBinding ?: throw NullPointerException(
+            return _binding ?: throw NullPointerException(
                 "View binding only allowed in Fragment's view lifecycle: between onCreateView and onDestroyView"
             )
         }
@@ -29,24 +29,24 @@ class AboutMeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _fragmentAboutMeBinding = FragmentAboutMeBinding.bind(view)
+        _binding = FragmentAboutMeBinding.bind(view)
 
-        fragmentAboutMeBinding.doneButton.setOnClickListener { addNickname() }
+        binding.doneButton.setOnClickListener { addNickname() }
     }
 
     private fun addNickname() {
-        fragmentAboutMeBinding.nicknameText.text = fragmentAboutMeBinding.nicknameEdit.text
-        fragmentAboutMeBinding.nicknameEdit.visibility = View.GONE
-        fragmentAboutMeBinding.doneButton.visibility = View.GONE
-        fragmentAboutMeBinding.nicknameText.visibility = View.VISIBLE
+        binding.nicknameText.text = binding.nicknameEdit.text
+        binding.nicknameEdit.visibility = View.GONE
+        binding.doneButton.visibility = View.GONE
+        binding.nicknameText.visibility = View.VISIBLE
 
         // Hide keyboard
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(fragmentAboutMeBinding.doneButton.windowToken, 0)
+        imm.hideSoftInputFromWindow(binding.doneButton.windowToken, 0)
     }
 
     override fun onDestroyView() {
-        _fragmentAboutMeBinding = null
+        _binding = null
         super.onDestroyView()
     }
 }
