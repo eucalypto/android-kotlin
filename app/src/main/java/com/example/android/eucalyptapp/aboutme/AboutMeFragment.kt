@@ -1,4 +1,4 @@
-package com.example.android.eucalyptapp
+package com.example.android.eucalyptapp.aboutme
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import com.example.android.eucalyptapp.R
 import com.example.android.eucalyptapp.databinding.FragmentAboutMeBinding
+import kotlinx.android.synthetic.main.fragment_about_me.*
 
 class AboutMeFragment : Fragment() {
 
@@ -18,6 +20,8 @@ class AboutMeFragment : Fragment() {
                 "View binding only allowed in Fragment's view lifecycle: between onCreateView and onDestroyView"
             )
         }
+
+    private val myName = MyName("Gandalf the Grey")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,12 +34,14 @@ class AboutMeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAboutMeBinding.bind(view)
+        binding.myName = myName
 
         binding.doneButton.setOnClickListener { addNickname() }
     }
 
     private fun addNickname() {
-        binding.nicknameText.text = binding.nicknameEdit.text
+        myName.nickname = nicknameEdit.text.toString()
+        binding.invalidateAll()
         binding.nicknameEdit.visibility = View.GONE
         binding.doneButton.visibility = View.GONE
         binding.nicknameText.visibility = View.VISIBLE

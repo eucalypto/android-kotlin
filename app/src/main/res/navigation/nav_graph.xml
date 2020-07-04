@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_dice_roller" />
     <fragment
         android:id="@+id/aboutMeFragment"
-        android:name="com.example.android.eucalyptapp.AboutMeFragment"
+        android:name="com.example.android.eucalyptapp.aboutme.AboutMeFragment"
         android:label="fragment_about_me"
         tools:layout="@layout/fragment_about_me" />
 </navigation>
