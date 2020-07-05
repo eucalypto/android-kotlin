@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/aboutMeFragment">
+    app:startDestination="@id/nav_about_me">
 
     <fragment
-        android:id="@+id/diceRollerFragment"
+        android:id="@+id/nav_dice_roller"
         android:name="com.example.android.eucalyptapp.DiceRollerFragment"
         android:label="fragment_dice_roller"
         tools:layout="@layout/fragment_dice_roller" />
     <fragment
-        android:id="@+id/aboutMeFragment"
+        android:id="@+id/nav_about_me"
         android:name="com.example.android.eucalyptapp.aboutme.AboutMeFragment"
         android:label="fragment_about_me"
         tools:layout="@layout/fragment_about_me" />

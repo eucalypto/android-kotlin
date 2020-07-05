@@ -19,4 +19,7 @@
     </string>
     <string name="nickname_edit_hint">what is your nickname</string>
     <string name="done_button_text">done</string>
+    <string name="menu_dice_roller">Dice Roller</string>
+    <string name="menu_about_me">About Me</string>
+    <string name="nav_header_desc">Navigation Header</string>
 </resources>

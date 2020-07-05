@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="NameStyle">
         <item name="android:layout_marginTop">@dimen/layout_margin</item>
         <item name="android:paddingTop">@dimen/small_padding</item>
