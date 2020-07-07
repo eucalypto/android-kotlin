@@ -22,4 +22,5 @@
     <string name="menu_dice_roller">Dice Roller</string>
     <string name="menu_about_me">About Me</string>
     <string name="nav_header_desc">Navigation Header</string>
+    <string name="menu_color_my_views">Color My Views</string>
 </resources>

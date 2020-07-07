@@ -15,4 +15,9 @@
         android:name="com.example.android.eucalyptapp.aboutme.AboutMeFragment"
         android:label="fragment_about_me"
         tools:layout="@layout/fragment_about_me" />
+    <fragment
+        android:id="@+id/nav_color_my_views"
+        android:name="com.example.android.eucalyptapp.ColorMyViewsFragment"
+        android:label="fragment_color_my_views"
+        tools:layout="@layout/fragment_color_my_views" />
 </navigation>

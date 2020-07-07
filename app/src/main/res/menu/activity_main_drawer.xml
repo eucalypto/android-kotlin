@@ -12,5 +12,9 @@
             android:id="@+id/nav_about_me"
             android:icon="@android:drawable/ic_menu_help"
             android:title="@string/menu_about_me" />
+        <item
+            android:id="@+id/nav_color_my_views"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="@string/menu_color_my_views" />
     </group>
 </menu>
