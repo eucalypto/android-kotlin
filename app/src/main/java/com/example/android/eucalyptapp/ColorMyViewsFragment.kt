@@ -13,9 +13,8 @@ class ColorMyViewsFragment : Fragment() {
     private var _binding: FragmentColorMyViewsBinding? = null
     private val binding: FragmentColorMyViewsBinding
         get() {
-            return _binding ?: throw NullPointerException(
-                "View binding only allowed in Fragment's view lifecycle: between onCreateView and onDestroyView"
-            )
+            return _binding
+                ?: throw NullPointerException("View binding only allowed in Fragment's view lifecycle: between onCreateView and onDestroyView")
         }
 
     override fun onCreateView(
@@ -41,7 +40,10 @@ class ColorMyViewsFragment : Fragment() {
             binding.textView3,
             binding.textView4,
             binding.textView5,
-            binding.colorMyViewsLayout
+            binding.colorMyViewsLayout,
+            binding.greenButton,
+            binding.redButton,
+            binding.yellowButton
         )
 
         for (item in clickableViews) {
@@ -58,7 +60,16 @@ class ColorMyViewsFragment : Fragment() {
             R.id.textView4 -> view.setBackgroundResource(android.R.color.holo_green_dark)
             R.id.textView5 -> view.setBackgroundResource(android.R.color.holo_green_light)
 
+            R.id.red_button -> binding.textView3.setBackgroundResource(R.color.my_red)
+            R.id.green_button -> binding.textView5.setBackgroundResource(R.color.my_green)
+            R.id.yellow_button -> binding.textView4.setBackgroundResource(R.color.my_yellow)
+
             else -> view.setBackgroundColor(Color.LTGRAY)
         }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }
