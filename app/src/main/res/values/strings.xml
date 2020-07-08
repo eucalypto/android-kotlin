@@ -24,4 +24,8 @@
     <string name="nav_header_desc">Navigation Header</string>
     <string name="menu_color_my_views">Color My Views</string>
     <string name="box_one">Box One</string>
+    <string name="box_two">Box 2</string>
+    <string name="box_five">Box Five</string>
+    <string name="box_four">Box Four</string>
+    <string name="box_three">Box Three</string>
 </resources>
