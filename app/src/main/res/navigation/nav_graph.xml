@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_color_my_views">
+    app:startDestination="@id/titleFragment">
 
     <fragment
         android:id="@+id/nav_dice_roller"
@@ -20,4 +20,18 @@
         android:name="de.eucalypto.eucalyptapp.ColorMyViewsFragment"
         android:label="fragment_color_my_views"
         tools:layout="@layout/fragment_color_my_views" />
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="de.eucalypto.eucalyptapp.TitleFragment"
+        android:label="TitleFragment"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="de.eucalypto.eucalyptapp.trivia.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" />
 </navigation>
