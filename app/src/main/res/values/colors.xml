@@ -8,4 +8,8 @@
     <color name="my_red">#E54304</color>
     <color name="my_yellow">#FFC107</color>
 
+    <color name="youWinDark">#35A571</color>
+    <color name="youWinBackground">#B7F8C9</color>
+    <color name="gameOverBackground">#f8bbd0</color>
+
 </resources>
