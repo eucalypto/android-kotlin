@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_color_my_views" />
     <fragment
         android:id="@+id/titleFragment"
-        android:name="de.eucalypto.eucalyptapp.TitleFragment"
+        android:name="de.eucalypto.eucalyptapp.trivia.TitleFragment"
         android:label="TitleFragment"
         tools:layout="@layout/fragment_title">
         <action
@@ -33,5 +33,36 @@
         android:id="@+id/gameFragment"
         android:name="de.eucalypto.eucalyptapp.trivia.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_gameWonFragment"
+            app:destination="@id/gameWonFragment"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_gameFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOverFragment"
+        android:name="de.eucalypto.eucalyptapp.trivia.GameOverFragment"
+        android:label="fragment_game_over"
+        tools:layout="@layout/fragment_game_over">
+        <action
+            android:id="@+id/action_gameOverFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpTo="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameWonFragment"
+        android:name="de.eucalypto.eucalyptapp.trivia.GameWonFragment"
+        android:label="fragment_game_won"
+        tools:layout="@layout/fragment_game_won">
+        <action
+            android:id="@+id/action_gameWonFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpTo="@id/titleFragment" />
+    </fragment>
 </navigation>

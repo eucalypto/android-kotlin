@@ -1,10 +1,12 @@
-package de.eucalypto.eucalyptapp
+package de.eucalypto.eucalyptapp.trivia
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -28,6 +30,10 @@ class TitleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.playButton.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
+        )
     }
 
     override fun onDestroyView() {
