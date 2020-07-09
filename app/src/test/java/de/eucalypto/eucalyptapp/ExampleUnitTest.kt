@@ -1,4 +1,4 @@
-package com.example.android.eucalyptapp
+package de.eucalypto.eucalyptapp
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

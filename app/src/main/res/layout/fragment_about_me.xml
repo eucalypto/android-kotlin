@@ -7,7 +7,7 @@
 
         <variable
             name="myName"
-            type="com.example.android.eucalyptapp.aboutme.MyName" />
+            type="de.eucalypto.eucalyptapp.aboutme.MyName" />
     </data>
 
     <LinearLayout

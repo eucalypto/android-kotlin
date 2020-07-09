@@ -1,4 +1,4 @@
-package com.example.android.eucalyptapp
+package de.eucalypto.eucalyptapp
 
 import android.os.Bundle
 import android.view.LayoutInflater

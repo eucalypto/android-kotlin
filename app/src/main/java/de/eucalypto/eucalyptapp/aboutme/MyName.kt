@@ -1,4 +1,4 @@
-package com.example.android.eucalyptapp.aboutme
+package de.eucalypto.eucalyptapp.aboutme
 
 data class MyName(
     var name: String = "",

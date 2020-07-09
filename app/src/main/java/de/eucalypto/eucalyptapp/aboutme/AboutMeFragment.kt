@@ -1,4 +1,4 @@
-package com.example.android.eucalyptapp.aboutme
+package de.eucalypto.eucalyptapp.aboutme
 
 import android.content.Context
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import com.example.android.eucalyptapp.R
-import com.example.android.eucalyptapp.databinding.FragmentAboutMeBinding
+import de.eucalypto.eucalyptapp.R
+import de.eucalypto.eucalyptapp.databinding.FragmentAboutMeBinding
 import kotlinx.android.synthetic.main.fragment_about_me.*
 
 class AboutMeFragment : Fragment() {

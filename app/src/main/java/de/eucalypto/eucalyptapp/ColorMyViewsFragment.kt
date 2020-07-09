@@ -1,4 +1,4 @@
-package com.example.android.eucalyptapp
+package de.eucalypto.eucalyptapp
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.android.eucalyptapp.databinding.FragmentColorMyViewsBinding
+import de.eucalypto.eucalyptapp.databinding.FragmentColorMyViewsBinding
 
 class ColorMyViewsFragment : Fragment() {
 
