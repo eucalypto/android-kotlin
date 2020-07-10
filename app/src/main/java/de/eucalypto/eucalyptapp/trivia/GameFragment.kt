@@ -137,14 +137,19 @@ class GameFragment : Fragment() {
                             .navigate(
                                 GameFragmentDirections.actionGameFragmentToGameWonFragment(
                                     numQuestions,
-                                    answerIndex
+                                    questionIndex
                                 )
                             )
                     }
                 } else {
                     // Game over! A wrong answer sends us to the gameOverFragment.
                     view.findNavController()
-                        .navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
+                        .navigate(
+                            GameFragmentDirections.actionGameFragmentToGameOverFragment(
+                                numQuestions,
+                                questionIndex
+                            )
+                        )
                 }
             }
         }
