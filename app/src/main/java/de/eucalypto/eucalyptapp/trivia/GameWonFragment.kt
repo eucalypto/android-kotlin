@@ -16,8 +16,12 @@
 
 package de.eucalypto.eucalyptapp.trivia
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -29,6 +33,7 @@ import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentGameWonBinding
 
 class GameWonFragment : Fragment() {
+
     private val args: GameWonFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -42,6 +47,7 @@ class GameWonFragment : Fragment() {
         binding.nextMatchButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())
         )
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -53,5 +59,31 @@ class GameWonFragment : Fragment() {
             "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}",
             Toast.LENGTH_LONG
         ).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.winner_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.share -> shareSuccess()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun getShareIntent(): Intent {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            getString(R.string.share_success_text, args.numCorrect, args.numQuestions)
+        )
+        return shareIntent
+    }
+
+    private fun shareSuccess() {
+        startActivity(getShareIntent())
     }
 }
