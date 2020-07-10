@@ -20,5 +20,13 @@
             android:id="@+id/nav_title_fragment"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/menu_trivia_game" />
+        <item
+            android:id="@+id/nav_rules_fragment"
+            android:icon="@drawable/rules"
+            android:title="@string/rules" />
+        <item
+            android:id="@+id/nav_about_fragment"
+            android:icon="@drawable/android"
+            android:title="@string/about" />
     </group>
 </menu>

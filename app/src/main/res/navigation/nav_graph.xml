@@ -83,4 +83,9 @@
         android:name="de.eucalypto.eucalyptapp.trivia.AboutFragment"
         android:label="@string/title_about_fragment"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/nav_rules_fragment"
+        android:name="de.eucalypto.eucalyptapp.trivia.RulesFragment"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" />
 </navigation>
