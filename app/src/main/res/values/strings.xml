@@ -52,4 +52,11 @@
     <string name="congratulations">Congratulations!</string>
     <string name="share">Share</string>
     <string name="sharing_not_available">Sharing Not Available</string>
+    <string name="menu_trivia_game">Trivia Game</string>
+    <string name="title_dice_roller">Dice Roller</string>
+    <string name="title_about_me">About Me</string>
+    <string name="title_color_my_views">Color My Views</string>
+    <string name="title_trivia_game">Trivia Game</string>
+    <string name="title_game_won">You won!</string>
+    <string name="title_game_lost">Try again!</string>
 </resources>

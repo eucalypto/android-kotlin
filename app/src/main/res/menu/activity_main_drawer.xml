@@ -16,5 +16,9 @@
             android:id="@+id/nav_color_my_views"
             android:icon="@android:drawable/ic_menu_edit"
             android:title="@string/menu_color_my_views" />
+        <item
+            android:id="@+id/nav_title_fragment"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/menu_trivia_game" />
     </group>
 </menu>
