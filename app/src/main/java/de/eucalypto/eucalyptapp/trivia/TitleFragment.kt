@@ -38,7 +38,7 @@ class TitleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.playButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
+            Navigation.createNavigateOnClickListener(TitleFragmentDirections.actionTitleFragmentToGameFragment())
         )
     }
 
