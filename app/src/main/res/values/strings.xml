@@ -59,4 +59,5 @@
     <string name="title_trivia_game">Trivia Game</string>
     <string name="title_game_won">You won!</string>
     <string name="title_game_lost">Try again!</string>
+    <string name="title_about_fragment">About</string>
 </resources>
