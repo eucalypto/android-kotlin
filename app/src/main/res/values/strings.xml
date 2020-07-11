@@ -60,4 +60,7 @@
     <string name="title_game_won">You won!</string>
     <string name="title_game_lost">Try again!</string>
     <string name="title_about_fragment">About</string>
+    <string name="play_button_text">Play</string>
+    <string name="title_image_content_description">Trivia game start image: Big questionmark with the words Android Trivia</string>
+    <string name="next_match_button_text">Next Match</string>
 </resources>

@@ -46,7 +46,7 @@ class GameWonFragment : Fragment() {
             inflater, R.layout.fragment_game_won, container, false
         )
         binding.nextMatchButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())
+            Navigation.createNavigateOnClickListener(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
         )
         setHasOptionsMenu(true)
 
