@@ -1,10 +1,11 @@
-package de.eucalypto.eucalyptapp
+package de.eucalypto.eucalyptapp.diceroller
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import de.eucalypto.eucalyptapp.R
 import kotlinx.android.synthetic.main.fragment_dice_roller.*
 import java.util.Random
 

@@ -1,4 +1,4 @@
-package de.eucalypto.eucalyptapp
+package de.eucalypto.eucalyptapp.colormyviews
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentColorMyViewsBinding
 
 class ColorMyViewsFragment : Fragment() {
@@ -60,9 +61,15 @@ class ColorMyViewsFragment : Fragment() {
             R.id.textView4 -> view.setBackgroundResource(android.R.color.holo_green_dark)
             R.id.textView5 -> view.setBackgroundResource(android.R.color.holo_green_light)
 
-            R.id.red_button -> binding.textView3.setBackgroundResource(R.color.my_red)
-            R.id.green_button -> binding.textView5.setBackgroundResource(R.color.my_green)
-            R.id.yellow_button -> binding.textView4.setBackgroundResource(R.color.my_yellow)
+            R.id.red_button -> binding.textView3.setBackgroundResource(
+                R.color.my_red
+            )
+            R.id.green_button -> binding.textView5.setBackgroundResource(
+                R.color.my_green
+            )
+            R.id.yellow_button -> binding.textView4.setBackgroundResource(
+                R.color.my_yellow
+            )
 
             else -> view.setBackgroundColor(Color.LTGRAY)
         }
