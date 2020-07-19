@@ -5,6 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/navDessertPusherFragment"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/menu_dessert_pusher" />
+
+        <item
             android:id="@+id/nav_dice_roller"
             android:icon="@android:drawable/ic_menu_add"
             android:title="@string/menu_dice_roller" />
