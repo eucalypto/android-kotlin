@@ -3,6 +3,7 @@
     package="de.eucalypto.eucalyptapp">
 
     <application
+        android:name=".EucalyptApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
