@@ -1,6 +1,7 @@
 package de.eucalypto.eucalyptapp.dessertpusher
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -13,6 +14,7 @@ import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentDessertPusherBinding
+import timber.log.Timber
 
 class DessertPusherFragment : Fragment() {
 
@@ -51,10 +53,21 @@ class DessertPusherFragment : Fragment() {
     )
     private var currentDessert = allDesserts[0]
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Timber.i("onAttach called")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Timber.i("onCreate called")
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.i("onCreateView called")
         setHasOptionsMenu(true)
 
         // Inflate the layout for this fragment
@@ -63,6 +76,7 @@ class DessertPusherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Timber.i("onViewCreated called")
 
         _binding = FragmentDessertPusherBinding.bind(view)
 
@@ -76,6 +90,51 @@ class DessertPusherFragment : Fragment() {
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        Timber.i("onActivityCreated called")
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Timber.i("onViewStateRestored called")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timber.i("onStart called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop called")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Timber.i("onDestroyView called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy called")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Timber.i("onDetach called")
     }
 
     /**
