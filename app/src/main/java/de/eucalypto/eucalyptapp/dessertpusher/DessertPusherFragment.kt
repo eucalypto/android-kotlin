@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
+import com.example.android.dessertpusher.DessertTimer
 import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentDessertPusherBinding
 import timber.log.Timber
@@ -20,6 +21,7 @@ class DessertPusherFragment : Fragment() {
 
     private var revenue = 0
     private var dessertsSold = 0
+    private lateinit var dessertTimer: DessertTimer
 
     private var _binding: FragmentDessertPusherBinding? = null
     private val binding: FragmentDessertPusherBinding
@@ -61,6 +63,8 @@ class DessertPusherFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.i("onCreate called")
+
+        dessertTimer = DessertTimer()
     }
 
     override fun onCreateView(
@@ -105,6 +109,8 @@ class DessertPusherFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         Timber.i("onStart called")
+
+        dessertTimer.startTimer()
     }
 
     override fun onResume() {
@@ -120,6 +126,8 @@ class DessertPusherFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         Timber.i("onStop called")
+
+        dessertTimer.stopTimer()
     }
 
     override fun onDestroyView() {
