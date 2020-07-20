@@ -64,7 +64,7 @@ class DessertPusherFragment : Fragment() {
         super.onCreate(savedInstanceState)
         Timber.i("onCreate called")
 
-        dessertTimer = DessertTimer()
+        dessertTimer = DessertTimer(this.lifecycle)
     }
 
     override fun onCreateView(
@@ -109,8 +109,6 @@ class DessertPusherFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         Timber.i("onStart called")
-
-        dessertTimer.startTimer()
     }
 
     override fun onResume() {
@@ -126,8 +124,6 @@ class DessertPusherFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         Timber.i("onStop called")
-
-        dessertTimer.stopTimer()
     }
 
     override fun onDestroyView() {
