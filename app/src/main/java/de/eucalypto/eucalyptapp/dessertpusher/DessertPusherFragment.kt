@@ -17,6 +17,10 @@ import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentDessertPusherBinding
 import timber.log.Timber
 
+const val KEY_REVENUE = "key_revenue"
+const val KEY_DESSERTS_SOLD = "key_desserts_sold"
+const val KEY_TIMER_COUNT = "key_timer"
+
 class DessertPusherFragment : Fragment() {
 
     private var revenue = 0
@@ -88,6 +92,14 @@ class DessertPusherFragment : Fragment() {
             onDessertClicked()
         }
 
+        if (savedInstanceState != null) {
+            revenue = savedInstanceState.getInt(KEY_REVENUE)
+            dessertsSold = savedInstanceState.getInt(KEY_DESSERTS_SOLD)
+            dessertTimer.secondsCount = savedInstanceState.getInt(KEY_TIMER_COUNT)
+            showCurrentDessert()
+            Timber.i("Recovered data from savedInstanceState")
+        }
+
         // Set the TextViews to the right values
         binding.revenue = revenue
         binding.amountSold = dessertsSold
@@ -124,6 +136,14 @@ class DessertPusherFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         Timber.i("onStop called")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Timber.i("onSaveInstanceState called")
+        outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERTS_SOLD, dessertsSold)
+        outState.putInt(KEY_TIMER_COUNT, dessertTimer.secondsCount)
     }
 
     override fun onDestroyView() {
