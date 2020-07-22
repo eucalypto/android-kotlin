@@ -20,10 +20,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentGuessthewordTitleBinding
 
 /**
@@ -36,9 +34,7 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val binding: FragmentGuessthewordTitleBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_guesstheword_title, container, false
-        )
+        val binding = FragmentGuessthewordTitleBinding.inflate(inflater, container, false)
 
         binding.playGameButton.setOnClickListener {
             findNavController().navigate(

@@ -21,11 +21,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentGameOverBinding
 
 class GameOverFragment : Fragment() {
@@ -37,9 +35,7 @@ class GameOverFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentGameOverBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_game_over, container, false
-        )
+        val binding = FragmentGameOverBinding.inflate(inflater, container, false)
 
         binding.tryAgainButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())

@@ -20,10 +20,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentGuessthewordGameBinding
 
 /**
@@ -48,12 +46,7 @@ class GameFragment : Fragment() {
     ): View? {
 
         // Inflate view and obtain an instance of the binding class
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_guesstheword_game,
-            container,
-            false
-        )
+        binding = FragmentGuessthewordGameBinding.inflate(inflater, container, false)
 
         resetList()
         nextWord()

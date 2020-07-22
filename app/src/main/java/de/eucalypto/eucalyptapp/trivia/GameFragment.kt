@@ -21,7 +21,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import de.eucalypto.eucalyptapp.R
@@ -100,9 +99,7 @@ class GameFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentGameBinding>(
-            inflater, R.layout.fragment_game, container, false
-        )
+        val binding = FragmentGameBinding.inflate(inflater, container, false)
 
         // Shuffles the questions and sets the question index to the first question.
         randomizeQuestions()

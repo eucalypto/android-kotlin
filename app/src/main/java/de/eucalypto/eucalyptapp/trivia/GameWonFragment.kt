@@ -26,7 +26,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ShareCompat
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -42,9 +41,7 @@ class GameWonFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentGameWonBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_game_won, container, false
-        )
+        val binding = FragmentGameWonBinding.inflate(inflater, container, false)
         binding.nextMatchButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
         )
