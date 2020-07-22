@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navDessertPusherFragment">
+    app:startDestination="@id/guesstheword_title_destination">
 
     <fragment
         android:id="@+id/nav_dice_roller"
@@ -113,4 +113,49 @@
         android:name="de.eucalypto.eucalyptapp.dessertpusher.DessertPusherFragment"
         android:label="@string/title_dessert_pusher"
         tools:layout="@layout/fragment_dessert_pusher" />
+    <fragment
+        android:id="@+id/guesstheword_title_destination"
+        android:name="de.eucalypto.eucalyptapp.guesstheword.title.TitleFragment"
+        android:label="@string/title_guesstheword_start"
+        tools:layout="@layout/fragment_guesstheword_title">
+        <action
+            android:id="@+id/action_guesstheword_title_destination_to_guesstheword_game_destination"
+            app:destination="@id/guesstheword_game_destination"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/guesstheword_game_destination"
+        android:name="de.eucalypto.eucalyptapp.guesstheword.game.GameFragment"
+        android:label="@string/title_guesstheword_play"
+        tools:layout="@layout/fragment_guesstheword_game">
+        <action
+            android:id="@+id/action_guesstheword_game_destination_to_guesstheword_score_destination"
+            app:destination="@id/guesstheword_score_destination"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/guesstheword_title_destination" />
+    </fragment>
+    <fragment
+        android:id="@+id/guesstheword_score_destination"
+        android:name="de.eucalypto.eucalyptapp.guesstheword.score.ScoreFragment"
+        android:label="@string/title_guesstheword_score"
+        tools:layout="@layout/fragment_guesstheword_score">
+        <action
+            android:id="@+id/action_guesstheword_score_destination_to_guesstheword_game_destination"
+            app:destination="@id/guesstheword_game_destination"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/guesstheword_title_destination" />
+        <argument
+            android:name="score"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

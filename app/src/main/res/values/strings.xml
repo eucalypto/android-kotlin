@@ -71,4 +71,20 @@
     <string name="menu_dessert_pusher">Dessert Pusher</string>
     <string name="title_rules_fragment">Rules</string>
     <string name="title_dessert_pusher">Dessert Pusher</string>
+
+    <string name="skip">Skip</string>
+    <string name="play_again">Play Again</string>
+    <string name="you_scored">You Scored</string>
+    <string name="title_text">guess the word!</string>
+    <string name="play_button">Play</string>
+    <string name="get_ready">Get ready to</string>
+    <string name="got_it">Got it</string>
+    <string name="word_is">The word is…</string>
+    <string name="quote_format">\"%s\"</string>
+    <string name="score_format">Current Score: %d</string>
+    <string name="menu_guess_the_word">Guess the Word</string>
+    <string name="title_guesstheword_start">Guess the Word Start</string>
+    <string name="title_guesstheword_play">Guess the Word Play</string>
+    <string name="title_guesstheword_score">Guess the Word Score</string>
+
 </resources>

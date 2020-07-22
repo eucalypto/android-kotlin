@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/guesstheword_title_destination"
+            android:icon="@android:drawable/ic_media_ff"
+            android:title="@string/menu_guess_the_word" />
         <item
             android:id="@+id/navDessertPusherFragment"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/menu_dessert_pusher" />
-
         <item
             android:id="@+id/nav_dice_roller"
             android:icon="@android:drawable/ic_menu_add"
