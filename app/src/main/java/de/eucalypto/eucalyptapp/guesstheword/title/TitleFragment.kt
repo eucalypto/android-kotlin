@@ -37,10 +37,7 @@ class TitleFragment : Fragment() {
         val binding = FragmentGuessthewordTitleBinding.inflate(inflater, container, false)
 
         binding.playGameButton.setOnClickListener {
-            findNavController().navigate(
-                TitleFragmentDirections
-                    .actionGuessthewordTitleDestinationToGuessthewordGameDestination()
-            )
+            findNavController().navigate(TitleFragmentDirections.actionGuessthewordStartGame())
         }
         return binding.root
     }

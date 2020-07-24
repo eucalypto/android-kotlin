@@ -24,7 +24,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import de.eucalypto.eucalyptapp.databinding.FragmentGameOverBinding
+import de.eucalypto.eucalyptapp.databinding.FragmentTriviaGameOverBinding
 
 class GameOverFragment : Fragment() {
 
@@ -35,10 +35,10 @@ class GameOverFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentGameOverBinding.inflate(inflater, container, false)
+        val binding = FragmentTriviaGameOverBinding.inflate(inflater, container, false)
 
         binding.tryAgainButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())
+            Navigation.createNavigateOnClickListener(GameOverFragmentDirections.actionTriviaStartNewGame())
         )
 
         return binding.root

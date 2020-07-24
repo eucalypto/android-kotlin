@@ -3,11 +3,11 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/guesstheword_title_destination"
+            android:id="@+id/nav_guesstheword_title"
             android:icon="@android:drawable/ic_media_ff"
             android:title="@string/menu_guess_the_word" />
         <item
-            android:id="@+id/navDessertPusherFragment"
+            android:id="@+id/nav_dessertpusher"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/menu_dessert_pusher" />
         <item
@@ -23,15 +23,15 @@
             android:icon="@android:drawable/ic_menu_edit"
             android:title="@string/menu_color_my_views" />
         <item
-            android:id="@+id/nav_title_fragment"
+            android:id="@+id/nav_trivia_title"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/menu_trivia_game" />
         <item
-            android:id="@+id/nav_rules_fragment"
+            android:id="@+id/nav_rules"
             android:icon="@drawable/rules"
             android:title="@string/rules" />
         <item
-            android:id="@+id/nav_about_fragment"
+            android:id="@+id/nav_about"
             android:icon="@drawable/android"
             android:title="@string/about" />
     </group>

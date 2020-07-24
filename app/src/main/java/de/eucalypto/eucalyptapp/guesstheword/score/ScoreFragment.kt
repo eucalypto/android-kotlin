@@ -48,9 +48,6 @@ class ScoreFragment : Fragment() {
     }
 
     private fun onPlayAgain() {
-        findNavController().navigate(
-            ScoreFragmentDirections
-                .actionGuessthewordScoreDestinationToGuessthewordGameDestination()
-        )
+        findNavController().navigate(ScoreFragmentDirections.actionGuessthewordStartNewGame())
     }
 }

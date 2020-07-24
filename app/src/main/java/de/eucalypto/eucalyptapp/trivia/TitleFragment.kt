@@ -12,12 +12,12 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import de.eucalypto.eucalyptapp.R
-import de.eucalypto.eucalyptapp.databinding.FragmentTitleBinding
+import de.eucalypto.eucalyptapp.databinding.FragmentTriviaTitleBinding
 
 class TitleFragment : Fragment() {
 
-    private var _binding: FragmentTitleBinding? = null
-    private val binding: FragmentTitleBinding
+    private var _binding: FragmentTriviaTitleBinding? = null
+    private val binding: FragmentTriviaTitleBinding
         get() {
             return _binding
                 ?: throw NullPointerException("Binding is only accessible between onCreateView and onDestroyView")
@@ -28,8 +28,8 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        // return inflater.inflate(R.layout.fragment_title, container, false)
-        _binding = FragmentTitleBinding.inflate(inflater, container, false)
+        // return inflater.inflate(R.layout.fragment_trivia_title, container, false)
+        _binding = FragmentTriviaTitleBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -38,7 +38,7 @@ class TitleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.playButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+            Navigation.createNavigateOnClickListener(TitleFragmentDirections.actionTriviaStartGame())
         )
     }
 

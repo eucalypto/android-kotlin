@@ -67,7 +67,7 @@ class GameFragment : Fragment() {
      */
     private fun gameFinished() {
         val action =
-            GameFragmentDirections.actionGuessthewordGameDestinationToGuessthewordScoreDestination(
+            GameFragmentDirections.actionGuessthewordShowScore(
                 viewModel.score
             )
         findNavController(this).navigate(action)

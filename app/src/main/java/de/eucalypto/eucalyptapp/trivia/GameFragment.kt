@@ -24,7 +24,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import de.eucalypto.eucalyptapp.R
-import de.eucalypto.eucalyptapp.databinding.FragmentGameBinding
+import de.eucalypto.eucalyptapp.databinding.FragmentTriviaGameBinding
 
 class GameFragment : Fragment() {
     data class Question(
@@ -99,7 +99,7 @@ class GameFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val binding = FragmentGameBinding.inflate(inflater, container, false)
+        val binding = FragmentTriviaGameBinding.inflate(inflater, container, false)
 
         // Shuffles the questions and sets the question index to the first question.
         randomizeQuestions()
@@ -132,7 +132,7 @@ class GameFragment : Fragment() {
                         // We've won!  Navigate to the gameWonFragment.
                         view.findNavController()
                             .navigate(
-                                GameFragmentDirections.actionGameFragmentToGameWonFragment(
+                                GameFragmentDirections.actionTriviaGameWon(
                                     numQuestions,
                                     questionIndex
                                 )
@@ -142,7 +142,7 @@ class GameFragment : Fragment() {
                     // Game over! A wrong answer sends us to the gameOverFragment.
                     view.findNavController()
                         .navigate(
-                            GameFragmentDirections.actionGameFragmentToGameOverFragment(
+                            GameFragmentDirections.actionTriviaGameLost(
                                 numQuestions,
                                 questionIndex
                             )

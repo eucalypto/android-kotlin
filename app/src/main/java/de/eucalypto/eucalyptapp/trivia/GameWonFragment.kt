@@ -30,7 +30,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import de.eucalypto.eucalyptapp.R
-import de.eucalypto.eucalyptapp.databinding.FragmentGameWonBinding
+import de.eucalypto.eucalyptapp.databinding.FragmentTriviaGameWonBinding
 
 class GameWonFragment : Fragment() {
 
@@ -41,11 +41,13 @@ class GameWonFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentGameWonBinding.inflate(inflater, container, false)
+        val binding = FragmentTriviaGameWonBinding.inflate(inflater, container, false)
         binding.nextMatchButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
+            Navigation.createNavigateOnClickListener(GameWonFragmentDirections.actionTriviaStartNewGame())
         )
         setHasOptionsMenu(true)
+
+        R.id.action_trivia_start_new_game
 
         return binding.root
     }
