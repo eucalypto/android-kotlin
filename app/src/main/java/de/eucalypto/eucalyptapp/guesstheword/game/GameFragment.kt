@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import de.eucalypto.eucalyptapp.databinding.FragmentGuessthewordGameBinding
 import timber.log.Timber
@@ -49,16 +50,20 @@ class GameFragment : Fragment() {
 
         binding.correctButton.setOnClickListener {
             viewModel.onCorrect()
-            updateWordText()
-            updateScoreText()
         }
+
         binding.skipButton.setOnClickListener {
             viewModel.onSkip()
-            updateWordText()
-            updateScoreText()
         }
-        updateScoreText()
-        updateWordText()
+
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
+
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+            binding.wordText.text = newWord
+        })
+
         return binding.root
     }
 
@@ -68,18 +73,8 @@ class GameFragment : Fragment() {
     private fun gameFinished() {
         val action =
             GameFragmentDirections.actionGuessthewordShowScore(
-                viewModel.score
+                viewModel.score.value ?: 0
             )
         findNavController(this).navigate(action)
-    }
-
-    /** Methods for updating the UI **/
-
-    private fun updateWordText() {
-        binding.wordText.text = viewModel.word
-    }
-
-    private fun updateScoreText() {
-        binding.scoreText.text = viewModel.score.toString()
     }
 }
