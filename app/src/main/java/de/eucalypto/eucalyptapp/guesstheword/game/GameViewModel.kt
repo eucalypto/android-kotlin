@@ -17,7 +17,7 @@ class GameViewModel : ViewModel() {
         const val ONE_SECOND = 1000L
 
         // This is the total time of the game
-        const val COUNTDOWN_TIME = 6000L
+        const val COUNTDOWN_TIME = 8000L
     }
 
     // The current word
@@ -49,6 +49,7 @@ class GameViewModel : ViewModel() {
         resetList()
         nextWord()
         _score.value = 0
+        _secondsLeft.value = (COUNTDOWN_TIME / ONE_SECOND) + 1
 
         timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
 
@@ -62,8 +63,7 @@ class GameViewModel : ViewModel() {
                 _eventGameFinish.value = true
             }
         }
-
-        resetTime()
+        timer.start()
     }
 
     /** Methods for buttons presses **/
@@ -71,19 +71,11 @@ class GameViewModel : ViewModel() {
     fun onSkip() {
         _score.value = _score.value?.minus(1)
         nextWord()
-        resetTime()
     }
 
     fun onCorrect() {
         _score.value = _score.value?.plus(1)
         nextWord()
-        resetTime()
-    }
-
-    private fun resetTime() {
-        timer.cancel()
-        _secondsLeft.value = (COUNTDOWN_TIME / ONE_SECOND) + 1
-        timer.start()
     }
 
     override fun onCleared() {
