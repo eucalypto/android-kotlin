@@ -1,8 +1,10 @@
 package de.eucalypto.eucalyptapp.guesstheword.game
 
 import android.os.CountDownTimer
+import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
@@ -35,6 +37,10 @@ class GameViewModel : ViewModel() {
     private val _secondsLeft = MutableLiveData<Long>()
     val secondsLeft: LiveData<Long>
         get() = _secondsLeft
+
+    val secondsLeftString: LiveData<String> = Transformations.map(secondsLeft) { remainingSeconds ->
+        DateUtils.formatElapsedTime(remainingSeconds)
+    }
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>

@@ -17,7 +17,6 @@
 package de.eucalypto.eucalyptapp.guesstheword.game
 
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,10 +48,6 @@ class GameFragment : Fragment() {
 
         viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished) gameFinished()
-        })
-
-        viewModel.secondsLeft.observe(viewLifecycleOwner, Observer { secondsLeft ->
-            binding.timerText.text = DateUtils.formatElapsedTime(secondsLeft)
         })
 
         return binding.root
