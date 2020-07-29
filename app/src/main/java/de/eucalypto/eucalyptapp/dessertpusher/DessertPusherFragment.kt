@@ -61,12 +61,12 @@ class DessertPusherFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Timber.i("onAttach called")
+        Timber.d("onAttach called")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.i("onCreate called")
+        Timber.d("onCreate called")
 
         dessertTimer = DessertTimer(this.lifecycle)
     }
@@ -75,7 +75,7 @@ class DessertPusherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Timber.i("onCreateView called")
+        Timber.d("onCreateView called")
         setHasOptionsMenu(true)
 
         // Inflate the layout for this fragment
@@ -84,7 +84,7 @@ class DessertPusherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.i("onViewCreated called")
+        Timber.d("onViewCreated called")
 
         _binding = FragmentDessertPusherBinding.bind(view)
 
@@ -97,7 +97,7 @@ class DessertPusherFragment : Fragment() {
             dessertsSold = savedInstanceState.getInt(KEY_DESSERTS_SOLD)
             dessertTimer.secondsCount = savedInstanceState.getInt(KEY_TIMER_COUNT)
             showCurrentDessert()
-            Timber.i("Recovered data from savedInstanceState")
+            Timber.d("Recovered data from savedInstanceState")
         }
 
         // Set the TextViews to the right values
@@ -110,37 +110,37 @@ class DessertPusherFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Timber.i("onActivityCreated called")
+        Timber.d("onActivityCreated called")
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        Timber.i("onViewStateRestored called")
+        Timber.d("onViewStateRestored called")
     }
 
     override fun onStart() {
         super.onStart()
-        Timber.i("onStart called")
+        Timber.d("onStart called")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.i("onResume called")
+        Timber.d("onResume called")
     }
 
     override fun onPause() {
         super.onPause()
-        Timber.i("onPause called")
+        Timber.d("onPause called")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.i("onStop called")
+        Timber.d("onStop called")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Timber.i("onSaveInstanceState called")
+        Timber.d("onSaveInstanceState called")
         outState.putInt(KEY_REVENUE, revenue)
         outState.putInt(KEY_DESSERTS_SOLD, dessertsSold)
         outState.putInt(KEY_TIMER_COUNT, dessertTimer.secondsCount)
@@ -148,17 +148,17 @@ class DessertPusherFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Timber.i("onDestroyView called")
+        Timber.d("onDestroyView called")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.i("onDestroy called")
+        Timber.d("onDestroy called")
     }
 
     override fun onDetach() {
         super.onDetach()
-        Timber.i("onDetach called")
+        Timber.d("onDetach called")
     }
 
     /**

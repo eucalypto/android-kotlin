@@ -44,7 +44,7 @@ class GameViewModel : ViewModel() {
         get() = _eventGameFinish
 
     init {
-        Timber.i("GameViewModel created")
+        Timber.d("GameViewModel created")
         _eventGameFinish.value = false
         resetList()
         nextWord()
@@ -55,11 +55,11 @@ class GameViewModel : ViewModel() {
 
             override fun onTick(millisUntilFinished: Long) {
                 _secondsLeft.value = secondsLeft.value?.minus(1)
-                Timber.i("timer onTick()")
+                Timber.d("timer onTick()")
             }
 
             override fun onFinish() {
-                Timber.i("timer onFinish()")
+                Timber.d("timer onFinish()")
                 _eventGameFinish.value = true
             }
         }
@@ -81,7 +81,7 @@ class GameViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         timer.cancel()
-        Timber.i("GameViewModel destroyed")
+        Timber.d("GameViewModel destroyed")
     }
 
     /**

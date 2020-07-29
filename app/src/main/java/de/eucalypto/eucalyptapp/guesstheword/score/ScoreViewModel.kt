@@ -14,12 +14,12 @@ class ScoreViewModel(finalScore: Int) : ViewModel() {
     val eventPlayAgain = _eventPlayAgain.toLiveData()
 
     init {
-        Timber.i("ScoreViewModel created. Final score: $finalScore")
+        Timber.d("ScoreViewModel created. Final score: $finalScore")
     }
 
     fun onPlayAgain() {
         _eventPlayAgain.value = true
-        Timber.i("onPlayAgain() executed")
+        Timber.d("onPlayAgain() executed")
     }
 
     fun onPlayAgainComplete() {
