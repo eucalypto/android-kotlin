@@ -26,7 +26,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import de.eucalypto.eucalyptapp.databinding.FragmentGuessthewordGameBinding
-import timber.log.Timber
 
 /**
  * Fragment where the game is played
@@ -45,17 +44,7 @@ class GameFragment : Fragment() {
         // Inflate view and obtain an instance of the binding class
         binding = FragmentGuessthewordGameBinding.inflate(inflater, container, false)
 
-        Timber.i("Called viewModel from onCreateView$viewModel")
-
-
-
-        binding.correctButton.setOnClickListener {
-            viewModel.onCorrect()
-        }
-
-        binding.skipButton.setOnClickListener {
-            viewModel.onSkip()
-        }
+        binding.gameViewModel = viewModel
 
         viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()

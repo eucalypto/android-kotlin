@@ -19,6 +19,7 @@ class ScoreViewModel(finalScore: Int) : ViewModel() {
 
     fun onPlayAgain() {
         _eventPlayAgain.value = true
+        Timber.i("onPlayAgain() executed")
     }
 
     fun onPlayAgainComplete() {
