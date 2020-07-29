@@ -44,15 +44,8 @@ class GameFragment : Fragment() {
         // Inflate view and obtain an instance of the binding class
         binding = FragmentGuessthewordGameBinding.inflate(inflater, container, false)
 
-        binding.gameViewModel = viewModel
-
-        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
-            binding.scoreText.text = newScore.toString()
-        })
-
-        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
-            binding.wordText.text = newWord
-        })
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished) gameFinished()
