@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.eucalypto.eucalyptapp">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".EucalyptApplication"
         android:allowBackup="true"

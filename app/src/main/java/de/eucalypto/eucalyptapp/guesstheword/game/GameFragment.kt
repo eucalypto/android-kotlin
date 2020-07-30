@@ -16,15 +16,20 @@
 
 package de.eucalypto.eucalyptapp.guesstheword.game
 
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import de.eucalypto.eucalyptapp.databinding.FragmentGuessthewordGameBinding
+import timber.log.Timber
 
 /**
  * Fragment where the game is played
@@ -50,6 +55,10 @@ class GameFragment : Fragment() {
             if (hasFinished) gameFinished()
         })
 
+        viewModel.eventBuzz.observe(viewLifecycleOwner, Observer { buzzType ->
+            buzz(buzzType.pattern)
+        })
+
         return binding.root
     }
 
@@ -62,5 +71,26 @@ class GameFragment : Fragment() {
                 viewModel.score.value ?: 0
             )
         findNavController(this).navigate(action)
+    }
+
+    private fun buzz(pattern: LongArray) {
+        // The game crashes if the pattern is just [0] aka no pattern and is given to createWaveform()
+        if (pattern.contentEquals(longArrayOf(0))) return
+
+        val buzzer = activity?.getSystemService<Vibrator>()
+
+        buzzer?.let {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Timber.d("Using vibrate() system newer/equal than Oreo")
+                buzzer.vibrate(VibrationEffect.createWaveform(pattern, -1))
+            } else {
+                Timber.d("Using vibrate() for system older than Oreo")
+                //deprecated in API 26
+                @Suppress("DEPRECATION")
+                buzzer.vibrate(pattern, -1)
+            }
+        }
+
+        viewModel.onBuzzComplete()
     }
 }
