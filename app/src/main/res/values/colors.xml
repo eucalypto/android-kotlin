@@ -23,6 +23,9 @@
     <color name="black_text_color">#de000000</color>
     <color name="grey_text_color">#99000000</color>
     <color name="grey_button_color">#606060</color>
-    <color name="white_text_color">#ffffff</color>
+
+    <color name="green_color">#388310</color>
+    <color name="white_text_color">#f0f0f0</color>
+
 
 </resources>

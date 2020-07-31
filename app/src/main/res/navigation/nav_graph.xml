@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_guesstheword_title">
+    app:startDestination="@id/sleepTrackerFragment">
 
     <fragment
         android:id="@+id/nav_dice_roller"
@@ -158,4 +158,9 @@
             android:defaultValue="0"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/sleepTrackerFragment"
+        android:name="de.eucalypto.eucalyptapp.sleep.sleeptracker.SleepTrackerFragment"
+        android:label="SleepTrackerFragment"
+        tools:layout="@layout/fragment_sleep_tracker" />
 </navigation>
