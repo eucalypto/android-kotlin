@@ -54,6 +54,7 @@ class GameViewModel : ViewModel() {
         get() = _secondsLeft
 
     val secondsLeftString: LiveData<String> = Transformations.map(secondsLeft) { remainingSeconds ->
+        Timber.d("map for secondsLeftString executed: $remainingSeconds")
         DateUtils.formatElapsedTime(remainingSeconds)
     }
 

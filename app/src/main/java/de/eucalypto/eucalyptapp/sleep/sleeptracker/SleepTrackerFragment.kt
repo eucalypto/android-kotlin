@@ -21,7 +21,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import de.eucalypto.eucalyptapp.databinding.FragmentSleepTrackerBinding
+import de.eucalypto.eucalyptapp.sleep.database.SleepDatabase
 
 /**
  * A fragment with buttons to record start and end times for sleep, which are saved in
@@ -40,9 +42,26 @@ class SleepTrackerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val viewModel = getViewModel()
+
         // Get a reference to the binding object and inflate the fragment views.
         val binding = FragmentSleepTrackerBinding.inflate(inflater, container, false)
 
+        binding.sleepTrackerViewModel = viewModel
+
+        binding.lifecycleOwner = this
+
         return binding.root
+    }
+
+    private fun getViewModel(): SleepTrackerViewModel {
+        val application = this.requireActivity().application
+        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+        val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
+        val viewModel =
+            ViewModelProvider(this, viewModelFactory)
+                .get(SleepTrackerViewModel::class.java)
+
+        return viewModel
     }
 }
