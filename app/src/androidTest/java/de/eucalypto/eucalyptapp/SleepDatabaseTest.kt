@@ -69,6 +69,17 @@ class SleepDatabaseTest {
     }
 
     @Test
+    fun insertAndGetTwoNights() {
+        val night1 = SleepNight()
+        sleepDao.insert(night1)
+        val night2 = SleepNight()
+        sleepDao.insert(night2)
+
+        val nights = sleepDao.getAllNights().value
+        assertEquals(2, nights?.size)
+    }
+
+    @Test
     fun insertAndUpdateAndGetNight() {
         val night = SleepNight()
         sleepDao.insert(night)

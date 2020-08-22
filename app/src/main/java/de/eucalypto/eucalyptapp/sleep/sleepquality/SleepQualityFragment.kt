@@ -21,7 +21,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import de.eucalypto.eucalyptapp.databinding.FragmentSleepQualityBinding
+import de.eucalypto.eucalyptapp.sleep.database.SleepDatabase
 
 /**
  * Fragment that displays a list of clickable icons,
@@ -44,7 +48,30 @@ class SleepQualityFragment : Fragment() {
         // Get a reference to the binding object and inflate the fragment views.
         val binding = FragmentSleepQualityBinding.inflate(inflater, container, false)
 
-        val application = requireNotNull(this.activity).application
+        val application = requireActivity().application
+
+        val arguments = SleepQualityFragmentArgs.fromBundle(requireArguments())
+
+        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+
+        val viewModelFactory = SleepQualityViewModelFactory(arguments.sleepNightKey, dataSource)
+
+        val viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(SleepQualityViewModel::class.java)
+
+        binding.viewModel = viewModel
+
+        binding.lifecycleOwner = this
+
+
+        viewModel.navigateToSleepTracker.observe(viewLifecycleOwner) { shouldNavigate ->
+            if (!shouldNavigate) return@observe
+            findNavController().navigate(
+                SleepQualityFragmentDirections.actionSleepShowTracker()
+            )
+            viewModel.onNavigationComplete()
+        }
+
 
         return binding.root
     }

@@ -22,6 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import de.eucalypto.eucalyptapp.databinding.FragmentSleepTrackerBinding
 import de.eucalypto.eucalyptapp.sleep.database.SleepDatabase
 
@@ -46,10 +48,18 @@ class SleepTrackerFragment : Fragment() {
 
         // Get a reference to the binding object and inflate the fragment views.
         val binding = FragmentSleepTrackerBinding.inflate(inflater, container, false)
-
         binding.sleepTrackerViewModel = viewModel
-
         binding.lifecycleOwner = this
+
+
+        viewModel.navigateToSleepQuality.observe(viewLifecycleOwner) { night ->
+            if (night == null) return@observe
+            findNavController().navigate(
+                SleepTrackerFragmentDirections
+                    .actionSleepShowQualityInput(night.nightId)
+            )
+            viewModel.completeNavigation()
+        }
 
         return binding.root
     }

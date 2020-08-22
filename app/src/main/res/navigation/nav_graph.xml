@@ -175,5 +175,8 @@
         <action
             android:id="@+id/action_sleep_show_tracker"
             app:destination="@id/nav_sleep_tracker" />
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long" />
     </fragment>
 </navigation>

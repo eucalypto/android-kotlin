@@ -96,12 +96,21 @@ class SleepTrackerViewModel(
         }
     }
 
+    private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
+    val navigateToSleepQuality: LiveData<SleepNight>
+        get() = _navigateToSleepQuality
+
     fun onStopTracking() {
         uiScope.launch {
             val oldNight = tonight.value ?: return@launch
             oldNight.endTimeMilli = System.currentTimeMillis()
             update(oldNight)
+            _navigateToSleepQuality.value = oldNight
         }
+    }
+
+    fun completeNavigation() {
+        _navigateToSleepQuality.value = null
     }
 
     private suspend fun update(night: SleepNight) {
