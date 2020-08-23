@@ -50,7 +50,7 @@ class SleepTrackerViewModel(
 
     private val tonight = MutableLiveData<SleepNight?>()
 
-    private val nights = database.getAllNights()
+    val nights = database.getAllNights()
 
     val nightsString: LiveData<Spanned> = Transformations.map(nights) { nights ->
         Timber.d("nightsString is called")
