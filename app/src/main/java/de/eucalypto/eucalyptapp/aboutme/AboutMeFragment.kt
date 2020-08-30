@@ -27,13 +27,19 @@ class AboutMeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about_me, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // The following could also be done in onCreateView:
+        // _binding = FragmentAboutMeBinding.inflate(inflater, container, false)
+        // return binding.root
         _binding = FragmentAboutMeBinding.bind(view)
+
         binding.myName = myName
 
         binding.doneButton.setOnClickListener { addNickname() }
