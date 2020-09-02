@@ -17,14 +17,12 @@
 package de.eucalypto.eucalyptapp.sleep.sleeptracker
 
 import android.app.Application
-import android.text.Spanned
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import de.eucalypto.eucalyptapp.sleep.database.SleepDatabaseDao
 import de.eucalypto.eucalyptapp.sleep.database.SleepNight
-import de.eucalypto.eucalyptapp.sleep.formatNights
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -51,11 +49,6 @@ class SleepTrackerViewModel(
     private val tonight = MutableLiveData<SleepNight?>()
 
     val nights = database.getAllNights()
-
-    val nightsString: LiveData<Spanned> = Transformations.map(nights) { nights ->
-        Timber.d("nightsString is called")
-        formatNights(nights, application.resources)
-    }
 
     val startButtonVisible = Transformations.map(tonight) {
         it == null

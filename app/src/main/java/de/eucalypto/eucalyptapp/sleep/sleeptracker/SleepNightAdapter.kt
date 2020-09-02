@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.sleep.convertDurationToFormatted
@@ -13,13 +15,7 @@ import de.eucalypto.eucalyptapp.sleep.database.SleepNight
 import kotlinx.android.synthetic.main.list_item_sleep_night.view.*
 
 class SleepNightAdapter
-    : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>() {
-
-    var data = listOf<SleepNight>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    : ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
         : ViewHolder {
@@ -27,17 +23,8 @@ class SleepNightAdapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val night = data[position]
+        val night = getItem(position)
         holder.bind(night)
-    }
-
-    /**
-     * Returns the total number of items in the data set held by the adapter.
-     *
-     * @return The total number of items in this adapter.
-     */
-    override fun getItemCount(): Int {
-        return data.size
     }
 
     class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -70,6 +57,16 @@ class SleepNightAdapter
                 return ViewHolder(view)
             }
         }
+    }
+}
+
+class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>() {
+    override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem.nightId == newItem.nightId
+    }
+
+    override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem == newItem
     }
 }
 
