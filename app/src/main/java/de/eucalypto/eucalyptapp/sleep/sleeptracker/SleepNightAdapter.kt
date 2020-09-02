@@ -1,18 +1,15 @@
 package de.eucalypto.eucalyptapp.sleep.sleeptracker
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.eucalypto.eucalyptapp.R
+import de.eucalypto.eucalyptapp.databinding.ListItemSleepNightBinding
 import de.eucalypto.eucalyptapp.sleep.convertDurationToFormatted
 import de.eucalypto.eucalyptapp.sleep.convertNumericQualityToString
 import de.eucalypto.eucalyptapp.sleep.database.SleepNight
-import kotlinx.android.synthetic.main.list_item_sleep_night.view.*
 
 class SleepNightAdapter
     : ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
@@ -27,17 +24,15 @@ class SleepNightAdapter
         holder.bind(night)
     }
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val sleepLength: TextView = itemView.sleep_length
-        val quality: TextView = itemView.quality_string
-        val qualityImage: ImageView = itemView.quality_image
+    class ViewHolder private constructor(val binding: ListItemSleepNightBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(night: SleepNight) {
             val res = itemView.context.resources
-            sleepLength.text =
+            binding.sleepLength.text =
                 convertDurationToFormatted(night.startTimeMilli, night.endTimeMilli, res)
-            quality.text = convertNumericQualityToString(night.sleepQuality, res)
-            qualityImage.setImageResource(
+            binding.qualityString.text = convertNumericQualityToString(night.sleepQuality, res)
+            binding.qualityImage.setImageResource(
                 when (night.sleepQuality) {
                     0 -> R.drawable.ic_sleep_0
                     1 -> R.drawable.ic_sleep_1
@@ -53,8 +48,8 @@ class SleepNightAdapter
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.list_item_sleep_night, parent, false)
-                return ViewHolder(view)
+                val binding = ListItemSleepNightBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
     }
