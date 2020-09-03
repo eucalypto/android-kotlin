@@ -166,6 +166,9 @@
         <action
             android:id="@+id/action_sleep_show_quality_input"
             app:destination="@id/nav_sleep_quality" />
+        <action
+            android:id="@+id/action_nav_sleep_tracker_to_sleepDetailFragment"
+            app:destination="@id/nav_sleep_detail" />
     </fragment>
     <fragment
         android:id="@+id/nav_sleep_quality"
@@ -178,5 +181,16 @@
         <argument
             android:name="sleepNightKey"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_sleep_detail"
+        android:name="de.eucalypto.eucalyptapp.sleep.sleepdetail.SleepDetailFragment"
+        android:label="SleepDetailFragment">
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_sleep_detail_to_tracker"
+            app:destination="@id/nav_sleep_tracker" />
     </fragment>
 </navigation>
