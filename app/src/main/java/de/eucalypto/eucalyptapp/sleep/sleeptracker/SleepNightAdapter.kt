@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.eucalypto.eucalyptapp.databinding.ListItemSleepNightBinding
 import de.eucalypto.eucalyptapp.sleep.database.SleepNight
 
-class SleepNightAdapter
-    : ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
+class SleepNightAdapter(private val clickListener: SleepNightListener) :
+    ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
         : ViewHolder {
@@ -18,14 +18,15 @@ class SleepNightAdapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val night = getItem(position)
-        holder.bind(night)
+        holder.bind(night, clickListener)
     }
 
     class ViewHolder private constructor(val binding: ListItemSleepNightBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(night: SleepNight) {
+        fun bind(night: SleepNight, clickListener: SleepNightListener) {
             binding.sleepNight = night
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -49,4 +50,6 @@ class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>() {
     }
 }
 
-
+class SleepNightListener(val clickListener: (sleepId: Long) -> Unit) {
+    fun onClick(night: SleepNight) = clickListener(night.nightId)
+}
