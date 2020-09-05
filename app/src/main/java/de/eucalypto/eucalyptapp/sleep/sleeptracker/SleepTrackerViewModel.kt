@@ -109,21 +109,21 @@ class SleepTrackerViewModel(
         }
     }
 
-    private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
-    val navigateToSleepQuality: LiveData<SleepNight>
-        get() = _navigateToSleepQuality
+    private val _navigateToSleepQualityInput = MutableLiveData<SleepNight>()
+    val navigateToSleepQualityInput: LiveData<SleepNight>
+        get() = _navigateToSleepQualityInput
 
     fun onStopTracking() {
         uiScope.launch {
             val oldNight = tonight.value ?: return@launch
             oldNight.endTimeMilli = System.currentTimeMillis()
             update(oldNight)
-            _navigateToSleepQuality.value = oldNight
+            _navigateToSleepQualityInput.value = oldNight
         }
     }
 
     fun completeNavigation() {
-        _navigateToSleepQuality.value = null
+        _navigateToSleepQualityInput.value = null
     }
 
     private suspend fun update(night: SleepNight) {
@@ -146,6 +146,18 @@ class SleepTrackerViewModel(
             Timber.d("clear() called")
             database.clear()
         }
+    }
+
+    private val _navigateToSleepDataDetail = MutableLiveData<Long>()
+    val navigateToSleepDataDetail: LiveData<Long>
+        get() = _navigateToSleepDataDetail
+
+    fun onSleepNightClicked(nightId: Long) {
+        _navigateToSleepDataDetail.value = nightId
+    }
+
+    fun onSleepDataDetailNavigated() {
+        _navigateToSleepDataDetail.value = null
     }
 }
 

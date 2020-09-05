@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -58,7 +57,7 @@ class SleepTrackerFragment : Fragment() {
 
 
 
-        viewModel.navigateToSleepQuality.observe(viewLifecycleOwner) { night ->
+        viewModel.navigateToSleepQualityInput.observe(viewLifecycleOwner) { night ->
             if (night == null) return@observe
             findNavController().navigate(
                 SleepTrackerFragmentDirections
@@ -81,9 +80,19 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepList.layoutManager = manager
 
         val adapter = SleepNightAdapter(SleepNightListener { nightId ->
-            Toast.makeText(context, "$nightId", Toast.LENGTH_LONG).show()
+            viewModel.onSleepNightClicked(nightId)
         })
         binding.sleepList.adapter = adapter
+
+
+        viewModel.navigateToSleepDataDetail.observe(viewLifecycleOwner, Observer { nightId ->
+            nightId?.let {
+                this.findNavController()
+                    .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
+                viewModel.onSleepDataDetailNavigated()
+            }
+        })
+
         viewModel.nights.observe(viewLifecycleOwner, Observer { nightsList ->
             adapter.submitList(nightsList)
         })

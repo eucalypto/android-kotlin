@@ -167,8 +167,10 @@
             android:id="@+id/action_sleep_show_quality_input"
             app:destination="@id/nav_sleep_quality" />
         <action
-            android:id="@+id/action_nav_sleep_tracker_to_sleepDetailFragment"
-            app:destination="@id/nav_sleep_detail" />
+            android:id="@+id/action_sleep_tracker_to_detail"
+            app:destination="@id/nav_sleep_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/nav_sleep_quality"
@@ -177,7 +179,8 @@
         tools:layout="@layout/fragment_sleep_quality">
         <action
             android:id="@+id/action_sleep_show_tracker"
-            app:destination="@id/nav_sleep_tracker" />
+            app:destination="@id/nav_sleep_tracker"
+            app:popUpTo="@id/nav_sleep_tracker" />
         <argument
             android:name="sleepNightKey"
             app:argType="long" />
@@ -185,12 +188,14 @@
     <fragment
         android:id="@+id/nav_sleep_detail"
         android:name="de.eucalypto.eucalyptapp.sleep.sleepdetail.SleepDetailFragment"
-        android:label="SleepDetailFragment">
+        android:label="SleepDetailFragment"
+        tools:layout="@layout/fragment_sleep_detail">
         <argument
             android:name="sleepNightKey"
             app:argType="long" />
         <action
             android:id="@+id/action_sleep_detail_to_tracker"
-            app:destination="@id/nav_sleep_tracker" />
+            app:destination="@id/nav_sleep_tracker"
+            app:popUpTo="@id/nav_sleep_tracker" />
     </fragment>
 </navigation>

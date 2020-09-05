@@ -131,5 +131,6 @@
     <string name="hours_length">%d hours on %s</string>
     <string name="seconds_length">%d seconds on %s</string>
     <string name="sleep_quality_image_description">Sleep quality Image</string>
+    <string name="menu_sleep_tracker">Sleep Tracker</string>
 
 </resources>
