@@ -3,10 +3,11 @@ package de.eucalypto.eucalyptapp.minipaint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import de.eucalypto.eucalyptapp.databinding.FragmentMiniPaintBinding
+import de.eucalypto.eucalyptapp.R
 
 class MiniPaintFragment : Fragment() {
 
@@ -14,12 +15,14 @@ class MiniPaintFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val binding = FragmentMiniPaintBinding.inflate(inflater, container, false)
-
         (activity as AppCompatActivity).supportActionBar?.hide()
 
-        return binding.root
+        val myCanvasView = MyCanvasView(requireContext())
+
+        myCanvasView.systemUiVisibility = SYSTEM_UI_FLAG_FULLSCREEN
+        myCanvasView.contentDescription = getString(R.string.canvasContentDescription)
+
+        return myCanvasView
     }
 
     override fun onDestroyView() {
