@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_fan_controller">
+    app:startDestination="@id/nav_mini_paint">
 
     <fragment
         android:id="@+id/nav_dice_roller"
@@ -201,5 +201,11 @@
     <fragment
         android:id="@+id/nav_fan_controller"
         android:name="de.eucalypto.eucalyptapp.fancontroller.FanControllerFragment"
-        android:label="FanControllerFragment" />
+        android:label="FanControllerFragment"
+        tools:layout="@layout/fragment_fan_controller" />
+    <fragment
+        android:id="@+id/nav_mini_paint"
+        android:name="de.eucalypto.eucalyptapp.minipaint.MiniPaintFragment"
+        android:label="fragment_mini_paint"
+        tools:layout="@layout/fragment_mini_paint" />
 </navigation>
