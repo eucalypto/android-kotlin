@@ -143,4 +143,8 @@
     <string name="menu_fan_controller">Fan Controller</string>
     <string name="menu_mini_paint">Mini Paint</string>
 
+    <!-- Mini Paint -->
+    <string name="canvasContentDescription">Mini Paint is a simple line drawing tool.
+    Drag your fingers to draw. Rotate the phone to clear.</string>
+
 </resources>
