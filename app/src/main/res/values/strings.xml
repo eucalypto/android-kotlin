@@ -141,5 +141,6 @@
     <string name="fan_medium">2</string>
     <string name="fan_high">3</string>
     <string name="menu_fan_controller">Fan Controller</string>
+    <string name="menu_mini_paint">Mini Paint</string>
 
 </resources>

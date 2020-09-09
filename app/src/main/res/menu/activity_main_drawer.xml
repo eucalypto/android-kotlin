@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_mini_paint"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="@string/menu_mini_paint" />
+        <item
             android:id="@+id/nav_fan_controller"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/menu_fan_controller" />
