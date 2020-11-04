@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.example.android.dessertpusher
+package de.eucalypto.eucalyptapp.dessertpusher
 
 import android.os.Handler
 import androidx.lifecycle.Lifecycle
