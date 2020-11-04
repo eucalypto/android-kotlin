@@ -7,10 +7,10 @@ import timber.log.Timber
 
 class ScoreViewModel(finalScore: Int) : ViewModel() {
 
-    private val _score = MutableLiveData<Int>(finalScore)
+    private val _score = MutableLiveData(finalScore)
     val score = _score.toLiveData()
 
-    private val _eventPlayAgain = MutableLiveData<Boolean>(false)
+    private val _eventPlayAgain = MutableLiveData(false)
     val eventPlayAgain = _eventPlayAgain.toLiveData()
 
     init {

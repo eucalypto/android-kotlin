@@ -50,15 +50,15 @@ class SleepTrackerViewModel(
 
     val nights = database.getAllNights()
 
-    val startButtonVisible = Transformations.map(tonight) {
+    val startButtonVisible: LiveData<Boolean> = Transformations.map(tonight) {
         it == null
     }
 
-    val stopButtonVisible = Transformations.map(tonight) {
+    val stopButtonVisible: LiveData<Boolean> = Transformations.map(tonight) {
         it != null
     }
 
-    val clearButtonVisible = Transformations.map(nights) {
+    val clearButtonVisible: LiveData<Boolean> = Transformations.map(nights) {
         it.isNotEmpty()
     }
 
@@ -109,8 +109,8 @@ class SleepTrackerViewModel(
         }
     }
 
-    private val _navigateToSleepQualityInput = MutableLiveData<SleepNight>()
-    val navigateToSleepQualityInput: LiveData<SleepNight>
+    private val _navigateToSleepQualityInput = MutableLiveData<SleepNight?>()
+    val navigateToSleepQualityInput: LiveData<SleepNight?>
         get() = _navigateToSleepQualityInput
 
     fun onStopTracking() {

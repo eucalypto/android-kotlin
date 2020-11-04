@@ -206,6 +206,5 @@
     <fragment
         android:id="@+id/nav_mini_paint"
         android:name="de.eucalypto.eucalyptapp.minipaint.MiniPaintFragment"
-        android:label="fragment_mini_paint"
-        tools:layout="@layout/fragment_mini_paint" />
+        android:label="fragment_mini_paint" />
 </navigation>

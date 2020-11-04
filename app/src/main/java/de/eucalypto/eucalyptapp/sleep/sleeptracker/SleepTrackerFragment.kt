@@ -21,9 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -85,17 +83,17 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepList.adapter = adapter
 
 
-        viewModel.navigateToSleepDataDetail.observe(viewLifecycleOwner, Observer { nightId ->
+        viewModel.navigateToSleepDataDetail.observe(viewLifecycleOwner) { nightId ->
             nightId?.let {
                 this.findNavController()
                     .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
                 viewModel.onSleepDataDetailNavigated()
             }
-        })
+        }
 
-        viewModel.nights.observe(viewLifecycleOwner, Observer { nightsList ->
+        viewModel.nights.observe(viewLifecycleOwner) { nightsList ->
             adapter.submitList(nightsList)
-        })
+        }
 
         return binding.root
     }
@@ -104,10 +102,8 @@ class SleepTrackerFragment : Fragment() {
         val application = this.requireActivity().application
         val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
         val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
-        val viewModel =
-            ViewModelProvider(this, viewModelFactory)
-                .get(SleepTrackerViewModel::class.java)
 
-        return viewModel
+        return ViewModelProvider(this, viewModelFactory)
+            .get(SleepTrackerViewModel::class.java)
     }
 }
