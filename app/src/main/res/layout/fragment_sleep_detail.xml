@@ -8,7 +8,7 @@
     <data>
 
         <variable
-            name="sleepDetailViewModel"
+            name="viewModel"
             type="de.eucalypto.eucalyptapp.sleep.sleepdetail.SleepDetailViewModel" />
     </data>
 
@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:sleepImage="@{sleepDetailViewModel.night}" />
+            app:sleepImage="@{viewModel.night}" />
 
         <TextView
             android:id="@+id/quality_string"
@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quality_image"
-            app:sleepQualityString="@{sleepDetailViewModel.night}" />
+            app:sleepQualityString="@{viewModel.night}" />
 
         <TextView
             android:id="@+id/sleep_length"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quality_string"
-            app:sleepDurationFormatted="@{sleepDetailViewModel.night}" />
+            app:sleepDurationFormatted="@{viewModel.night}" />
 
         <Button
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
-            android:onClick="@{() -> sleepDetailViewModel.onClose()}"
+            android:onClick="@{() -> viewModel.onClose()}"
             android:text="@string/close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

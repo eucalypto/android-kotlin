@@ -22,7 +22,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import de.eucalypto.eucalyptapp.databinding.FragmentSleepQualityBinding
 import de.eucalypto.eucalyptapp.sleep.database.SleepDatabase
@@ -37,15 +36,12 @@ class SleepQualityFragment : Fragment() {
 
     /**
      * Called when the Fragment is ready to display content to the screen.
-     *
-     * This function uses DataBindingUtil to inflate R.layout.fragment_sleep_quality.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        // Get a reference to the binding object and inflate the fragment views.
         val binding = FragmentSleepQualityBinding.inflate(inflater, container, false)
 
         val application = requireActivity().application
