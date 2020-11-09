@@ -39,19 +39,16 @@ class GameViewModel : ViewModel() {
 
     // The current word
     private val _word = MutableLiveData<String>()
-    val word: LiveData<String>
-        get() = _word
+    val word: LiveData<String> by this::_word
 
     // The current score
     private val _score = MutableLiveData<Int>()
-    val score: LiveData<Int>
-        get() = _score
+    val score: LiveData<Int> by this::_score
 
     private val timer: CountDownTimer
 
     private val _secondsLeft = MutableLiveData<Long>()
-    val secondsLeft: LiveData<Long>
-        get() = _secondsLeft
+    val secondsLeft: LiveData<Long> by this::_secondsLeft
 
     val secondsLeftString: LiveData<String> = Transformations.map(secondsLeft) { remainingSeconds ->
         Timber.d("map for secondsLeftString executed: $remainingSeconds")

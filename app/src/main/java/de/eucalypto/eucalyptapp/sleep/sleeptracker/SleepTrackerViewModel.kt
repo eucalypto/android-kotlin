@@ -110,8 +110,7 @@ class SleepTrackerViewModel(
     }
 
     private val _navigateToSleepQualityInput = MutableLiveData<SleepNight?>()
-    val navigateToSleepQualityInput: LiveData<SleepNight?>
-        get() = _navigateToSleepQualityInput
+    val navigateToSleepQualityInput: LiveData<SleepNight?> by this::_navigateToSleepQualityInput
 
     fun onStopTracking() {
         uiScope.launch {

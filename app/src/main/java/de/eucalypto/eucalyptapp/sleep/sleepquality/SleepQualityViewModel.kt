@@ -41,8 +41,7 @@ class SleepQualityViewModel(
     }
 
     private val _navigateToSleepTracker = MutableLiveData<Boolean>()
-    val navigateToSleepTracker: LiveData<Boolean>
-        get() = _navigateToSleepTracker
+    val navigateToSleepTracker: LiveData<Boolean> by this::_navigateToSleepTracker
 
     fun onNavigationComplete() {
         _navigateToSleepTracker.value = false
