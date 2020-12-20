@@ -28,12 +28,17 @@ import com.google.android.material.snackbar.Snackbar
 import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentSleepTrackerBinding
 import de.eucalypto.eucalyptapp.sleep.database.SleepDatabase
+import de.eucalypto.eucalyptapp.sleep.database.SleepNight
 
 /**
  * A fragment with buttons to record start and end times for sleep, which are saved in
  * a database.
  */
 class SleepTrackerFragment : Fragment() {
+
+    lateinit var viewModel: SleepTrackerViewModel
+    lateinit var binding: FragmentSleepTrackerBinding
+    lateinit var adapter: SleepNightAdapter
 
     /**
      * Called when the Fragment is ready to display content to the screen.
@@ -43,33 +48,64 @@ class SleepTrackerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val viewModel = getViewModel()
+        viewModel = setupViewModel()
 
-        val binding = FragmentSleepTrackerBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        setupBinding(inflater, container)
 
+        adapter = setupRecyclerViewAdapter()
 
+        setupObservers()
 
+        return binding.root
+    }
+
+    private fun setupObservers() {
         viewModel.navigateToSleepQualityInput.observe(viewLifecycleOwner) { night ->
-            if (night == null) return@observe
-            findNavController().navigate(
-                SleepTrackerFragmentDirections
-                    .actionSleepShowQualityInput(night.nightId)
-            )
-            viewModel.completeNavigation()
+            navigateToSleepQualityInput(night)
         }
 
         viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-            if (!it) return@observe
-            Snackbar.make(
-                binding.clearButton,
-                getString(R.string.cleared_message),
-                Snackbar.LENGTH_SHORT
-            ).show()
-            viewModel.doneShowingSnackbar()
+            showSnackBarEvent(it)
         }
 
+        viewModel.navigateToSleepDataDetail.observe(viewLifecycleOwner) { nightId ->
+            navigateToSleepDataDetail(nightId)
+        }
+
+        viewModel.nights.observe(viewLifecycleOwner) { nightsList ->
+            adapter.submitList(nightsList)
+        }
+    }
+
+    private fun navigateToSleepDataDetail(nightId: Long?) {
+        nightId?.let {
+            this.findNavController()
+                .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
+            viewModel.onSleepDataDetailNavigated()
+        }
+    }
+
+    private fun showSnackBarEvent(it: Boolean) {
+        if (!it) return
+        Snackbar.make(
+            binding.clearButton,
+            getString(R.string.cleared_message),
+            Snackbar.LENGTH_SHORT
+        ).show()
+        viewModel.doneShowingSnackbar()
+    }
+
+    private fun navigateToSleepQualityInput(night: SleepNight?) {
+        night?.let {
+            findNavController().navigate(
+                SleepTrackerFragmentDirections
+                    .actionSleepShowQualityInput(it.nightId)
+            )
+            viewModel.completeNavigation()
+        }
+    }
+
+    private fun setupRecyclerViewAdapter(): SleepNightAdapter {
         val manager = GridLayoutManager(activity, 3)
         binding.sleepList.layoutManager = manager
 
@@ -77,24 +113,19 @@ class SleepTrackerFragment : Fragment() {
             viewModel.onSleepNightClicked(nightId)
         })
         binding.sleepList.adapter = adapter
-
-
-        viewModel.navigateToSleepDataDetail.observe(viewLifecycleOwner) { nightId ->
-            nightId?.let {
-                this.findNavController()
-                    .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
-                viewModel.onSleepDataDetailNavigated()
-            }
-        }
-
-        viewModel.nights.observe(viewLifecycleOwner) { nightsList ->
-            adapter.submitList(nightsList)
-        }
-
-        return binding.root
+        return adapter
     }
 
-    private fun getViewModel(): SleepTrackerViewModel {
+    private fun setupBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) {
+        binding = FragmentSleepTrackerBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setupViewModel(): SleepTrackerViewModel {
         val application = this.requireActivity().application
         val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
         val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
