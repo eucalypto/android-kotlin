@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import de.eucalypto.eucalyptapp.R
 import de.eucalypto.eucalyptapp.databinding.FragmentAboutMeBinding
-import kotlinx.android.synthetic.main.fragment_about_me.*
 
 class AboutMeFragment : Fragment() {
 
@@ -46,7 +45,7 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun addNickname() {
-        myName.nickname = nicknameEdit.text.toString()
+        myName.nickname = binding.nicknameEdit.text.toString()
         binding.invalidateAll()
         binding.nicknameEdit.visibility = View.GONE
         binding.doneButton.visibility = View.GONE

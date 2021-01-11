@@ -6,24 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import de.eucalypto.eucalyptapp.R
-import kotlinx.android.synthetic.main.fragment_dice_roller.*
+import de.eucalypto.eucalyptapp.databinding.FragmentDiceRollerBinding
 import java.util.Random
 
 class DiceRollerFragment : Fragment() {
 
+    lateinit var binding: FragmentDiceRollerBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dice_roller, container, false)
+
+        binding = FragmentDiceRollerBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rollButton.text = getString(R.string.roll_button_text)
-        rollButton.setOnClickListener {
+        binding.rollButton.text = getString(R.string.roll_button_text)
+        binding.rollButton.setOnClickListener {
             rollDice()
         }
     }
@@ -37,6 +42,6 @@ class DiceRollerFragment : Fragment() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-        diceImage.setImageResource(diceResource)
+        binding.diceImage.setImageResource(diceResource)
     }
 }
