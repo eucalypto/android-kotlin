@@ -40,23 +40,45 @@ class SleepTrackerFragment : Fragment() {
     lateinit var binding: FragmentSleepTrackerBinding
     lateinit var adapter: SleepNightAdapter
 
-    /**
-     * Called when the Fragment is ready to display content to the screen.
-     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        viewModel = setupViewModel()
-
+        setupViewModel()
         setupBinding(inflater, container)
-
-        adapter = setupRecyclerViewAdapter()
-
+        setupRecyclerViewAdapter()
         setupObservers()
 
         return binding.root
+    }
+
+    private fun setupViewModel() {
+        val application = this.requireActivity().application
+        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+        val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(SleepTrackerViewModel::class.java)
+    }
+
+    private fun setupBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) {
+        binding = FragmentSleepTrackerBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setupRecyclerViewAdapter() {
+        val manager = GridLayoutManager(activity, 3)
+        binding.sleepList.layoutManager = manager
+
+        adapter = SleepNightAdapter(SleepNightListener { nightId ->
+            viewModel.onSleepNightClicked(nightId)
+        })
+        binding.sleepList.adapter = adapter
     }
 
     private fun setupObservers() {
@@ -77,11 +99,13 @@ class SleepTrackerFragment : Fragment() {
         }
     }
 
-    private fun navigateToSleepDataDetail(nightId: Long?) {
-        nightId?.let {
-            this.findNavController()
-                .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
-            viewModel.onSleepDataDetailNavigated()
+    private fun navigateToSleepQualityInput(night: SleepNight?) {
+        night?.let {
+            findNavController().navigate(
+                SleepTrackerFragmentDirections
+                    .actionSleepShowQualityInput(it.nightId)
+            )
+            viewModel.completeNavigation()
         }
     }
 
@@ -95,42 +119,11 @@ class SleepTrackerFragment : Fragment() {
         viewModel.doneShowingSnackbar()
     }
 
-    private fun navigateToSleepQualityInput(night: SleepNight?) {
-        night?.let {
-            findNavController().navigate(
-                SleepTrackerFragmentDirections
-                    .actionSleepShowQualityInput(it.nightId)
-            )
-            viewModel.completeNavigation()
+    private fun navigateToSleepDataDetail(nightId: Long?) {
+        nightId?.let {
+            this.findNavController()
+                .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
+            viewModel.onSleepDataDetailNavigated()
         }
-    }
-
-    private fun setupRecyclerViewAdapter(): SleepNightAdapter {
-        val manager = GridLayoutManager(activity, 3)
-        binding.sleepList.layoutManager = manager
-
-        val adapter = SleepNightAdapter(SleepNightListener { nightId ->
-            viewModel.onSleepNightClicked(nightId)
-        })
-        binding.sleepList.adapter = adapter
-        return adapter
-    }
-
-    private fun setupBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) {
-        binding = FragmentSleepTrackerBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-    }
-
-    private fun setupViewModel(): SleepTrackerViewModel {
-        val application = this.requireActivity().application
-        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
-        val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
-
-        return ViewModelProvider(this, viewModelFactory)
-            .get(SleepTrackerViewModel::class.java)
     }
 }
