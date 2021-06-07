@@ -95,7 +95,7 @@ class SleepTrackerFragment : Fragment() {
         }
 
         viewModel.nights.observe(viewLifecycleOwner) { nightsList ->
-            adapter.submitList(nightsList)
+            adapter.addHeaderAndSubmitList(nightsList)
         }
     }
 
@@ -122,7 +122,7 @@ class SleepTrackerFragment : Fragment() {
     private fun navigateToSleepDataDetail(nightId: Long?) {
         nightId?.let {
             this.findNavController()
-                .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(nightId))
+                .navigate(SleepTrackerFragmentDirections.actionSleepTrackerToDetail(it))
             viewModel.onSleepDataDetailNavigated()
         }
     }

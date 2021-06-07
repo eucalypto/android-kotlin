@@ -146,5 +146,6 @@
     <!-- Mini Paint -->
     <string name="canvasContentDescription">Mini Paint is a simple line drawing tool.
     Drag your fingers to draw. Rotate the phone to clear.</string>
+    <string name="sleep_results_header">Sleep Results</string>
 
 </resources>
